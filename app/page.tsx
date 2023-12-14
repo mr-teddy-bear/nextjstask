@@ -1,8 +1,8 @@
 "use client";
 
-import { useGetCountries } from "@/api/gqlQuery/getCountries";
-import { Country, getCountryInfo } from "@/api/gqlQuery/getCountryInfo";
-import { Meta } from "@/components/Meta";
+import { useGetCountries } from "../api/gqlQuery/getCountries";
+import { Country, getCountryInfo } from "../api/gqlQuery/getCountryInfo";
+import { Meta } from "../components/Meta";
 import { useState } from "react";
 
 const Home = () => {
@@ -34,9 +34,13 @@ const Home = () => {
             <div
               className="flex flex-col gap-1 bg-lightBlue rounded p-4"
               style={{ flex: 2 }}
+              data-testid="country-list"
             >
               {countries.map((country) => (
-                <div key={country.code}>
+                <div
+                  key={country.code}
+                  data-testid={`country-button-${country.code}`}
+                >
                   <div
                     className="cursor-pointer p-3 bg-orange rounded border-bronze border-solid border-2  hover:text-white hover:border-white"
                     onClick={() => onCountryClick(country.code)}
